@@ -1,4 +1,5 @@
-import { animate, stagger } from "animejs";
+import { animate, stagger, waapi, splitText } from "animejs";
+import moment from "moment";
 import Murale from "../Murale.js";
 
 class Accueil {
@@ -11,7 +12,13 @@ class Accueil {
   }
 
   render() {
-    this.#application.conteneurHTML.innerHTML = `<div class ="grid grid-cols-3 gap-3" data-list-event></div>`;
+    this.#application.conteneurHTML.innerHTML = `<div>
+      <h1 class="text-center text-2xl p-10">Murales financées par la Ville de Montréal depuis 2007 <small>(Données récupérées le 
+      ${moment().format("DD-MM-YYYY")})</small>
+      </h1>
+    </div>
+    <div class ="grid grid-cols-3 gap-10 max-w-[70%] mx-auto" data-list-event></div>`;
+
     this.#listMuralesHTML = document.querySelector("[data-list-event]");
 
     this.rechercherEvenements();
@@ -40,6 +47,22 @@ class Accueil {
         );
       }.bind(this)
     );
+    this.animateGrid();
+  }
+
+  animateGrid() {
+    const cartes = this.#listMuralesHTML.querySelectorAll("[data-murale]");
+
+    animate(cartes, {
+      scale: [{ to: [0, 1.25, 1] }, { to: 1 }],
+      boxShadow: [
+        { to: "0 0 1rem 0 currentColor" },
+        { to: "0 0 0rem 0 currentColor" },
+      ],
+      delay: stagger(100, {
+        grid: [11, 4],
+      }),
+    });
   }
 }
 

@@ -31,14 +31,19 @@ class Murale {
 
   render() {
     const gabarit = `
-    <div class="flex flex-col items-center justify-between p-10" data-murale>
-        <img class="size-80 object-cover" src="${this.#image}" alt="image" />
-        <div class="flex flex-col gap-3 pt-5 w-80 font-semibold">
-          <p>Nom de(s) l'artiste(s) : ${this.#artiste}.</p>
-          <p>Organisme : ${this.#organisme}.</p>
-          <p>Année : ${this.#annee}.</p>
-          <p>${this.#adresse}.</p>
-          <p>${this.#arrondissement}.</p>
+    <div class="square flex flex-col gap-2 bg-gray-50 relative" data-murale>
+        <picture class="w-full h-[200px] overflow-hidden">
+          <i class="fa-regular fa-heart cursor-pointer absolute bottom-2 right-2 p-1" style="color: #e00b0b;"></i>
+          <img class="size-full object-cover hover:scale-110 transition-transform duration-300" src="${
+            this.#image
+          }" alt="image" />
+        </picture>
+        <div class="flex flex-col gap-3 pt-5 p-5 ">
+          <p class="font-medium italic "><i class="fa-solid fa-palette" style="color: #FFD43B;"></i> ${
+            this.#artiste
+          } , ${this.#annee}.</p>
+          <p>${this.#organisme}.</p>
+          <p> ${this.#arrondissement}.</p>
         </div>
     </div>`;
 

@@ -1,3 +1,4 @@
+import { animate, stagger, splitText } from "animejs";
 class Page404 {
   #application;
   constructor(application) {
@@ -7,11 +8,31 @@ class Page404 {
 
   render() {
     this.#application.conteneurHTML.innerHTML = `
-            <section class="p-5 container mx-auto bg-slate-100 min-h-screen flex justify-center items-center flex-col gap-8">
-              <h1 class="text-5xl text-orange-800 font-bold"><i class="fa-solid fa-person-digging mr-4"></i>Page non trouvée</h1>
-              <a href="/" class="text-lg text-orange-600 underline hover:text-orange-400">Retour à la page d'accueil</a>
-            </section>
+          <div class="mt-[200px]">
+              <section class="flex flex-col items-center gap-5 ">
+                <h2 class="text-9xl font-bold text-orange-500">Oops!</h2>
+                <h3 class="text-2xl">"Page introuvable"</h3>
+                <a class="text-xs font-semibold cursor-pointer underline" href="/">Retour à la page d'accueil</a>
+              </section>
+            </div>
         `;
+
+    const { chars } = splitText("h2", { words: false, chars: true });
+
+    animate(chars, {
+      y: [
+        { to: "-2.75rem", ease: "outExpo", duration: 600 },
+        { to: 0, ease: "outBounce", duration: 800, delay: 100 },
+      ],
+      rotate: {
+        from: "-1turn",
+        delay: 0,
+      },
+      delay: stagger(50),
+      ease: "inOutCirc",
+      loopDelay: 1000,
+      loop: true,
+    });
   }
 }
 export default Page404;
