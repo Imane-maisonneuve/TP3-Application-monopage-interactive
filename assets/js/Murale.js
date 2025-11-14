@@ -1,6 +1,7 @@
 class Murale {
   #application;
   #conteneurHTML;
+  #elementHTML;
   #artiste;
   #organisme;
   #annee;
@@ -43,12 +44,17 @@ class Murale {
             this.#artiste
           } , ${this.#annee}.</p>
           <p>${this.#organisme}.</p>
-          <p> ${this.#arrondissement}.</p>
+          <p class="text-sm"> ${this.#arrondissement}.</p>
         </div>
     </div>`;
 
     this.#conteneurHTML.insertAdjacentHTML("beforeend", gabarit);
+    // this.#elementHTML = this.#conteneurHTML.lastElementChild;
+    // this.#elementHTML.addEventListener("click", this.OnclickCarte.bind(this));
   }
+
+  // OnclickCarte() {
+  // }
 }
 
 export default Murale;
