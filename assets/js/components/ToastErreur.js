@@ -4,7 +4,7 @@ class ToastErreur extends Toast {
   constructor(message) {
     super(message);
   }
-
+  // Méthode pour injecter le HTML spécifique au toast d'erreur
   injecterHTML() {
     const gabarit = `<div class="fixed z-500 mx-auto flex justify-center items-center p-4 bg-red-500 text-amber-50 top-0 left-0 right-0" data-toast>${this.message}</div>`;
 

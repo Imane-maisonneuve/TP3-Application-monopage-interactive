@@ -6,6 +6,7 @@ class Page404 {
     this.render();
   }
 
+  // Render la page 404
   render() {
     this.#application.conteneurHTML.innerHTML = `
           <div class="mt-[200px]">
@@ -17,8 +18,10 @@ class Page404 {
             </div>
         `;
 
+    // Animation du texte "Oops!"
     const { chars } = splitText("h2", { words: false, chars: true });
 
+    // Animation avec Anime.js
     animate(chars, {
       y: [
         { to: "-2.75rem", ease: "outExpo", duration: 600 },

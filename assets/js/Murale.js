@@ -30,17 +30,18 @@ class Murale {
     this.render();
   }
 
+  // Méthode pour afficher la murale
   render() {
     const gabarit = `
     <div class="square flex flex-col gap-2 bg-gray-50 relative" data-murale>
         <picture class="w-full h-[200px] overflow-hidden">
-          <i class="fa-regular fa-heart cursor-pointer absolute bottom-2 right-2 p-1" style="color: #e00b0b;"></i>
+          <i class=" fa-solid fa-heart cursor-pointer absolute bottom-2 right-2 p-1" style="color: #e00b0b;" data-heart></i>
           <img class="size-full object-cover hover:scale-110 transition-transform duration-300" src="${
             this.#image
           }" alt="image" />
         </picture>
         <div class="flex flex-col gap-3 pt-5 p-5 ">
-          <p class="font-medium italic "><i class="fa-solid fa-palette" style="color: #FFD43B;"></i> ${
+          <p class="font-medium italic"><i class="fa-solid fa-palette" style="color: #FFD43B;"></i> ${
             this.#artiste
           } , ${this.#annee}.</p>
           <p>${this.#organisme}.</p>
@@ -48,13 +49,22 @@ class Murale {
         </div>
     </div>`;
 
+    // Insertion du gabarit HTML dans le conteneur
     this.#conteneurHTML.insertAdjacentHTML("beforeend", gabarit);
-    // this.#elementHTML = this.#conteneurHTML.lastElementChild;
-    // this.#elementHTML.addEventListener("click", this.OnclickCarte.bind(this));
+    // Référence à l'élément HTML de la murale
+    this.#elementHTML = this.#conteneurHTML.lastElementChild;
+    // Ajout de l'écouteur d'événement pour le clic
+    this.#elementHTML.addEventListener("click", this.OnclickCarte.bind(this));
   }
 
-  // OnclickCarte() {
-  // }
+  // Méthode pour gérer le clic sur la murale
+  OnclickCarte(evenement) {
+    let declencheur = evenement.currentTarget;
+    const element = declencheur.querySelector("[data-heart]");
+
+    // Animation du cœur
+    element.classList.toggle("fa-bounce");
+  }
 }
 
 export default Murale;

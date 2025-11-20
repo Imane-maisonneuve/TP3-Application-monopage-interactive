@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html class="h-full" lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,8 +7,8 @@
     <script type="module" src="assets/js/index.js"></script>
     <title>Murales subventionnées</title>
   </head>
-  <body>
-    <header class="flex justify-around h-20 bg-blue-950 mb-3">
+  <body class="min-h-screen flex flex-col">
+    <header class="flex justify-around h-20 bg-blue-950">
       <h1 class="p-5 text-amber-50 text-xl">Murales-Montréal</h1>
       <nav class="flex justify-center gap-5 text-amber-50">
         <a class="p-5 hover:underline hover:underline-offset-4 text-xl" href="/"
@@ -21,6 +21,9 @@
         >
       </nav>
     </header>
-    <main class="" data-application></main>
+    <main class="flex-1" data-application></main>
+    <footer class="flex justify-around items-center h-20 bg-blue-950 mt-5">
+      <p class="text-lg text-white text-center">© 2025 Murales de Montréal</p>
+    </footer>
   </body>
 </html>

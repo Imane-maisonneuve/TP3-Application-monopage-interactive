@@ -5,7 +5,7 @@ class Toast {
     this._message = message;
     this.injecterHTML();
   }
-
+  // modifier le message du toast
   set message(nouveauMessage) {
     if (nouveauMessage == "") {
       console.warn("Attention message invalide");
@@ -14,21 +14,19 @@ class Toast {
     }
     this._message = nouveauMessage.toLowerCase();
   }
-
+  // obtenir le message du toast
   get message() {
     return this._message;
   }
-
-  afficher() {}
-
+  // cacher le toast
   cacher() {
     if (this._elementHTML != null) {
       this._elementHTML.remove();
     }
   }
-
+  // injecter le toast dans le DOM
   injecterHTML() {
-    const gabarit = `<div class="toast" data-toast>${this._message}</div>`;
+    const gabarit = `<div data-toast>${this._message}</div>`;
 
     this._conteneurHTML.insertAdjacentHTML("beforeend", gabarit);
     this._elementHTML = this._conteneurHTML.lastElementChild;
